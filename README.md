@@ -28,6 +28,7 @@ Easy way to create jMeter cluster with terraform on your AWS infrastructure.
   }
   ```
 4. Use this commands to create infrastructure
+
   ```
   # terraform get
   # terraform apply
@@ -39,7 +40,7 @@ Easy way to create jMeter cluster with terraform on your AWS infrastructure.
   [ec2-user@<HOSTNAME> jmeter-master]$ python master_start.py
   ```
   
-  N.B. It require some time to start slave nodes and in case they're didn't for some reason, you can do it manually by SSHing to slave nodes and executing `/apache-jmeter-3.0/bin/jmeter-server` command
+  N.B. It requires some time to start slave nodes and in case they're didn't for some reason, you can do it manually by SSHing to slave nodes and executing `/apache-jmeter-3.0/bin/jmeter-server` command
 6. You can destroy the infrastructure with `terraform destroy`
 
 # How does it work
