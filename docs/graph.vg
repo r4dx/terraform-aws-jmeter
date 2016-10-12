@@ -1,0 +1,46 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_autoscaling_group.jmeter-slave-ASG" [label = "aws_autoscaling_group.jmeter-slave-ASG", shape = "box"]
+		"[root] aws_iam_instance_profile.jmeter_master_iam_profile" [label = "aws_iam_instance_profile.jmeter_master_iam_profile", shape = "box"]
+		"[root] aws_iam_role.jmeter_master_iam_role" [label = "aws_iam_role.jmeter_master_iam_role", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.jmeter_master_iam_role_attachment" [label = "aws_iam_role_policy_attachment.jmeter_master_iam_role_attachment", shape = "box"]
+		"[root] aws_instance.jmeter-master-instance" [label = "aws_instance.jmeter-master-instance", shape = "box"]
+		"[root] aws_key_pair.jmeter-master-keypair" [label = "aws_key_pair.jmeter-master-keypair", shape = "box"]
+		"[root] aws_key_pair.jmeter-slave-keypair" [label = "aws_key_pair.jmeter-slave-keypair", shape = "box"]
+		"[root] aws_launch_configuration.jmeter-slave-lc" [label = "aws_launch_configuration.jmeter-slave-lc", shape = "box"]
+		"[root] aws_security_group.jmeter-sg" [label = "aws_security_group.jmeter-sg", shape = "box"]
+		"[root] aws_security_group_rule.egress-private-sgr" [label = "aws_security_group_rule.egress-private-sgr", shape = "box"]
+		"[root] aws_security_group_rule.egress-public-sgr" [label = "aws_security_group_rule.egress-public-sgr", shape = "box"]
+		"[root] aws_security_group_rule.ingress-private-sgr" [label = "aws_security_group_rule.ingress-private-sgr", shape = "box"]
+		"[root] aws_security_group_rule.ingress-public-sgr" [label = "aws_security_group_rule.ingress-public-sgr", shape = "box"]
+#		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] aws_autoscaling_group.jmeter-slave-ASG" -> "[root] aws_launch_configuration.jmeter-slave-lc"
+#		"[root] aws_autoscaling_group.jmeter-slave-ASG" -> "[root] provider.aws"
+		"[root] aws_iam_instance_profile.jmeter_master_iam_profile" -> "[root] aws_iam_role.jmeter_master_iam_role"
+#		"[root] aws_iam_instance_profile.jmeter_master_iam_profile" -> "[root] provider.aws"
+#		"[root] aws_iam_role.jmeter_master_iam_role" -> "[root] provider.aws"
+		"[root] aws_iam_role_policy_attachment.jmeter_master_iam_role_attachment" -> "[root] aws_iam_role.jmeter_master_iam_role"
+#		"[root] aws_iam_role_policy_attachment.jmeter_master_iam_role_attachment" -> "[root] provider.aws"
+		"[root] aws_instance.jmeter-master-instance" -> "[root] aws_iam_instance_profile.jmeter_master_iam_profile"
+		"[root] aws_instance.jmeter-master-instance" -> "[root] aws_key_pair.jmeter-master-keypair"
+		"[root] aws_instance.jmeter-master-instance" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_instance.jmeter-master-instance" -> "[root] provider.aws"
+#		"[root] aws_key_pair.jmeter-master-keypair" -> "[root] provider.aws"
+#		"[root] aws_key_pair.jmeter-slave-keypair" -> "[root] provider.aws"
+		"[root] aws_launch_configuration.jmeter-slave-lc" -> "[root] aws_key_pair.jmeter-slave-keypair"
+		"[root] aws_launch_configuration.jmeter-slave-lc" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_launch_configuration.jmeter-slave-lc" -> "[root] provider.aws"
+#		"[root] aws_security_group.jmeter-sg" -> "[root] provider.aws"
+		"[root] aws_security_group_rule.egress-private-sgr" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_security_group_rule.egress-private-sgr" -> "[root] provider.aws"
+		"[root] aws_security_group_rule.egress-public-sgr" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_security_group_rule.egress-public-sgr" -> "[root] provider.aws"
+		"[root] aws_security_group_rule.ingress-private-sgr" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_security_group_rule.ingress-private-sgr" -> "[root] provider.aws"
+		"[root] aws_security_group_rule.ingress-public-sgr" -> "[root] aws_security_group.jmeter-sg"
+#		"[root] aws_security_group_rule.ingress-public-sgr" -> "[root] provider.aws"
+	}
+}
+
