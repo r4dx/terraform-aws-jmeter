@@ -46,5 +46,5 @@ variable "jmx_script_file" {
 
 variable "jmeter3_url" {
   description = "URL with jmeter archive"
-  default = "http://apache-mirror.rbc.ru/pub/apache/jmeter/binaries/apache-jmeter-3.0.tgz" 
+  default = "http://apache-mirror.rbc.ru/pub/apache/jmeter/binaries/apache-jmeter-3.3.tgz" 
 }
