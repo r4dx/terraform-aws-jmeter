@@ -2,9 +2,11 @@ resource "aws_instance" "jmeter-master-instance" {
 
   ami = "${lookup(var.aws_amis, var.aws_region)}"
   instance_type = "${var.master_instance_type}"
+  subnet_id     = "${var.subnet_ids[0]}"
+  key_name      = "${aws_key_pair.jmeter-master-keypair.key_name}"
 
-  security_groups = [ "${aws_security_group.jmeter-sg.name}" ]
-  key_name = "${aws_key_pair.jmeter-master-keypair.key_name}"
+  associate_public_ip_address = true
+  vpc_security_group_ids      = ["${aws_security_group.jmeter-sg.id}"]
 
   tags {
     Name = "jmeter-master"

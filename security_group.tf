@@ -1,5 +1,6 @@
 resource "aws_security_group" "jmeter-sg" {
-  name = "jmeter-sg"
+  name   = "jmeter-sg"
+  vpc_id = "${var.vpc_id}"
 }
 
 resource "aws_security_group_rule" "ingress-private-sgr" {

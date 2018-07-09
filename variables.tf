@@ -1,4 +1,14 @@
-variable "aws_region" { }
+variable "aws_region" {}
+
+variable "vpc_id" {
+  description = "VPC ID wher the cluster will be created"
+}
+
+variable "subnet_ids" {
+  description = "The list of subnet IDs where the cluster will be created. Master node will be created in teh first subnet mentioned in this list"
+  type        = "list"
+}
+
 variable "aws_amis" {
   default = {
     "us-east-1" = "ami-6869aa05"
