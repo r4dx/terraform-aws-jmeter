@@ -11,50 +11,38 @@ variable "subnet_ids" {
 
 variable "aws_amis" {
   default = {
-    "us-east-1" = "ami-6869aa05"
-    "us-west-2" = "ami-7172b611"
+    "us-west-2" = "ami-39d39d41"
   }
-}
-
-variable "availability_zones" {
-  default = "us-east-1b,us-east-1a"
 }
 
 variable "slave_instance_type" {
   description = "Instance type for slave nodes"
-  default = "t2.micro"
+  default     = "t2.micro"
 }
 
 variable "master_instance_type" {
   description = "Instance type for master node"
-  default = "t2.micro"
+  default     = "t2.medium"
 }
 
 variable "slave_ssh_public_key_file" {
   description = "SSH public key filename for slave nodes"
-  default = "ssh/slave.pub"
 }
 
 variable "master_ssh_public_key_file" {
   description = "SSH public key filename for master node"
-  default = "ssh/master.pub"
 }
 
 variable "master_ssh_private_key_file" {
   description = "SSH private key filename for master node"
-  default = "ssh/master"
 }
 
 variable "slave_asg_size" {
   description = "Amount of working nodes in ASG"
-  default = "2"
-}
-
-variable "jmx_script_file" {
-  description = "JMX Script to run on master"
+  default     = "2"
 }
 
 variable "jmeter3_url" {
   description = "URL with jmeter archive"
-  default = "http://apache-mirror.rbc.ru/pub/apache/jmeter/binaries/apache-jmeter-3.3.tgz" 
+  default     = "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-3.3.tgz"
 }

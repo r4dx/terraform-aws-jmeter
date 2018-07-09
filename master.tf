@@ -1,6 +1,5 @@
 resource "aws_instance" "jmeter-master-instance" {
-
-  ami = "${lookup(var.aws_amis, var.aws_region)}"
+  ami           = "${lookup(var.aws_amis, var.aws_region)}"
   instance_type = "${var.master_instance_type}"
   subnet_id     = "${var.subnet_ids[0]}"
   key_name      = "${aws_key_pair.jmeter-master-keypair.key_name}"
@@ -13,7 +12,7 @@ resource "aws_instance" "jmeter-master-instance" {
   }
 
   connection {
-    user = "ec2-user"
+    user        = "ec2-user"
     private_key = "${file("${var.master_ssh_private_key_file}")}"
   }
 
@@ -31,13 +30,14 @@ resource "aws_instance" "jmeter-master-instance" {
 }
 
 resource "aws_key_pair" "jmeter-master-keypair" {
-  key_name = "jmeter-master-keypair"
+  key_name   = "jmeter-master-keypair"
   public_key = "${file("${var.master_ssh_public_key_file}")}"
 }
 
+output "master_public_ip" {
+  value = "${aws_instance.jmeter-master-instance.public_ip}"
 }
 
-
-output "master_public_ip" {
-	value = "${aws_instance.jmeter-master-instance.public_ip}"
+output "master_private_ip" {
+  value = "${aws_instance.jmeter-master-instance.private_ip}"
 }
