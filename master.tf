@@ -19,9 +19,13 @@ resource "aws_instance" "jmeter-master-instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "cd /jmeter-master/",
-      "curl ${var.jmeter3_url} > jMeter.tgz",
-      "tar zxvf jMeter.tgz"
+      "sudo yum install -y java-1.8.0",
+      "sudo yum remove -y java-1.7.0-openjdk",
+      "sudo mkdir /opt/jmeter",
+      "sudo chown -R ec2-user /opt/jmeter",
+      "cd /opt/jmeter/",
+      "curl ${var.jmeter3_url} > /tmp/jMeter.tgz",
+      "tar zxvf /tmp/jMeter.tgz -C /opt/jmeter --strip-components=1",
     ]
   }
 }
